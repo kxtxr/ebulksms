@@ -1,0 +1,31 @@
+{
+  "name": "ebulksms",
+  "version": "0.0.1",
+  "description": "Node module for use with https://ebulksms.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1048kb/ebulksms.git"
+  },
+  "keywords": [
+    "bulk",
+    "sms",
+    "sms",
+    "ebulksms",
+    "nigeria"
+  ],
+  "author": "Kator `kb` James <kb.james@logicladdress.com> (https://logicaladdress.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1048kb/ebulksms/issues"
+  },
+  "homepage": "https://github.com/1048kb/ebulksms#readme",
+  "dependencies": {
+    "promise": "^8.0.1",
+    "unique-key": "0.0.6",
+    "unirest": "^0.5.1"
+  }
+}
