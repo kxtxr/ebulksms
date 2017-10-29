@@ -7,7 +7,7 @@ npm i -S ebulksms
 ```
 ## Usage
 ```javascript
-var ebulksms = require('ebulksms')(EBULKSMS_USERNAME, EBULKSMS_APIKEY, SENDER_ID /* Optional. Default 'EbulkSMS' */);
+var ebulksms = require('ebulksms')(EBULKSMS_USERNAME, EBULKSMS_APIKEY, { senderId: SENDER_ID /* Optional. Default 'EbulkSMS' */ } );
 ```
 ### Send SMS
 ```javascript
@@ -50,7 +50,7 @@ The first parameter can also be an array of objects in the form `[{ recipient: '
 ebulksms.balance()
   .then(function(res) {
     console.log(res);
-    // 1.0
+    // { balance: 1.0 }
   })
 
 ebulksms.report(messageId /* Optional */)

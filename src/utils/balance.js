@@ -6,7 +6,12 @@ module.exports = function(restEndpoint) {
         unirest.get(restEndpoint)
           .headers({ 'Content-Type': 'application/x-www-form-urlencoded' })
           .end(response => {
-             resolve(response.body);
+            var balance = (+response.body);
+            if(typeof balance === 'number') {
+                resolve({ balance: balance });
+            } else {
+                reject({ error: response.body });
+            }
           });
     });
 };

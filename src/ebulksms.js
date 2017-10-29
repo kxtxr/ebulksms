@@ -26,18 +26,20 @@ function Ebulksms(username, apiKey, config) {
 Ebulksms.prototype.send = function(recipients, message, messageId, config) {
     var gsms = [];
     config = config || {};
-    var flash = config.flash || false,
-        senderId = config.senderId || this.senderId;
+    var flash = ((config.flash || false) | 0).toString(),
+        senderId = config.senderId || this.senderId
     if (recipients instanceof Array) {
         for(var i = 0; i < recipients.length; i++) {
-            gsms.push({ msidn: recipients[i].recipient, msgid: recipients[i].msgId || uniqueKey() });
+            // gsms.push({ msidn: recipients[i].recipient, msgid: recipients[i].msgId || uniqueKey() });
         }
     }
     if (typeof recipients === 'string') {
         if ((messageId && messageId === 'auto') || !messageId) messageId = uniqueKey();
         gsms.push({ msidn: recipients, msgid: messageId });
+        // POST JSON does not work with c9 because ebulksms.com does support POST JSON as promised in API docs
+        // gsms.push(recipients)
     }
-    return sendSms(gsms, this.username, this.apiKey, message, flash.toString(), senderId, this.restEndpoint + '/sendsms.json');
+    return sendSms(gsms, this.username, this.apikey, message, flash, senderId, this.restEndpoint + '/sendsms.json');
 };
 
 /**
