@@ -1,6 +1,20 @@
 var unirest = require('unirest');
+
+// import 'promise' if not supported natively
 if(typeof Promise !== 'function') var Promise = require('promise');
 
+/**
+* Send sms
+*
+* @param {string[]} gsms        - Array of phone numbers to send sms to
+* @param {string} username      - Ebulksms username
+* @param {string} apiKey        - Ebulksms apiKey
+* @param {string} flash         - '1' for flash and '0' for otherwise
+* @param {string} senderId      - Sender's name
+* @param {string} restEndpoint  - Ebulksms endpoint
+*
+* @return {Promise}
+*/
 module.exports = function(gsms, username, apikey, message, flash, senderId, restEndpoint) {
     var params = {
       'SMS': { 
